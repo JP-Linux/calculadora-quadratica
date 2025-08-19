@@ -21,7 +21,6 @@ Este é um programa em C que calcula raízes e vértices de funções quadrátic
 
 ### Pré-requisitos
 - Compilador GCC (ou equivalente)
-- Biblioteca matemática padrão
 
 ### Passo a passo:
 ```bash
@@ -32,10 +31,10 @@ git clone https://github.com/JP-Linux/calculadora-quadratica.git
 cd calculadora-quadratica
 
 # Compile o programa
-gcc quadratica.c -o quadratica -lm
+gcc -lm -Iinclude  src/*.c main.c -o main
 
 # Execute
-./quadratica
+./main
 ```
 
 ## 📝 Exemplos de Uso
