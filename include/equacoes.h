@@ -2,5 +2,6 @@
 #define EQUACOES_H
 
 int quadratica();
+int limite();
 
 #endif

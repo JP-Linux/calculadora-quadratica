@@ -1,8 +1,11 @@
 #include "equacoes.h"
+#include "limite.h"
 #include "matematica.h"
 
+int quadratica()
+{
+    printf("\n=== FUNÇÃO QUADRÁTICA ===\n\n");
 
-int quadratica(){
     printf("Digite os coeficientes | a b c | separados por espaço: ");
     double a, b, c;
 
@@ -29,8 +32,7 @@ int quadratica(){
     double xv = vertice_x(a, b);
     double yv = vertice_y(a, dt);
 
-    printf("\n=== FUNÇÃO QUADRÁTICA ===\n\n");
-    printf("Coeficiente a: %.2f\n", a);
+    printf("\nCoeficiente a: %.2f\n", a);
     printf("Coeficiente b: %.2f\n", b);
     printf("Coeficiente c: %.2f\n", c);
     printf("\nDelta (Δ): %.2f\n", dt);
@@ -44,6 +46,30 @@ int quadratica(){
 
     // Vértice sempre será válido quando a != 0
     printf("Vértice: (%.2f, %.2f)\n", xv, yv);
+
+    return 0;
+}
+
+int limite()
+{
+    char expressao[100];
+    double ponto;
+
+    printf("\n=== CÁLCULO DE LIMITES ===\n\n");
+
+    printf("Digite a função f(x) (use 'x' como variável, ex: x^2 + 3*x - 2): ");
+    fgets(expressao, sizeof(expressao), stdin);
+
+    printf("Digite o ponto onde deseja calcular o limite: ");
+    if (scanf("%lf", &ponto) != 1) {
+        fprintf(stderr, "ERRO: Entrada inválida!\n");
+        return 1;
+    }
+    if (!verificar_numero(ponto)) {
+        fprintf(stderr, "ERRO: ponto inválidos (Digite um numeral).\n");
+        return 1;
+    }
+    calcula_limite(expressao, ponto);
 
     return 0;
 }
