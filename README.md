@@ -1,49 +1,55 @@
-# Calculadora de Funções Quadráticas em C
+# Matemática Computacional em C
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/JP-Linux/calculadora-quadratica?style=social)](https://github.com/JP-Linux/calculadora-quadratica/stargazers)
 
-Este é um programa em C que calcula raízes e vértices de funções quadráticas (equações do segundo grau) com tratamento robusto de erros.
+Este é um programa em C que oferece duas funcionalidades matemáticas principais: cálculo de funções quadráticas e cálculo de limites, com tratamento robusto de erros e interface intuitiva.
 
 ## ✨ Funcionalidades
 
+### 1. Funções Quadráticas
 - Cálculo das raízes reais ou complexas
 - Determinação do vértice da parábola
+- Cálculo do discriminante (delta)
 - Validação completa dos coeficientes
-- Tratamento de erros para:
-  - Entradas inválidas (não numéricas)
-  - Coeficiente `a` igual a zero
-  - Valores NaN (Not a Number) ou infinitos
-  - Discriminante negativo (raízes complexas)
-- Formatação clara dos resultados
+
+### 2. Cálculo de Limites
+- Avaliação de funções matemáticas em notação natural
+- Cálculo de limites por aproximação bilateral
+- Suporte a diversas funções matemáticas (trigonométricas, logarítmicas, exponenciais)
+- Análise do comportamento da função no ponto
 
 ## ⚙️ Compilação e Execução
 
 ### Pré-requisitos
 - Compilador GCC (ou equivalente)
-
-### Passo a passo:
+- Biblioteca matemática padrão
+  
+### Clone o repositório
 ```bash
-# Clone o repositório
-git clone https://github.com/JP-Linux/calculadora-quadratica.git
+git clone https://github.com/JP-Linux/matematica-computacional.git
+```
+### Acesse o diretório
+```bash
+cd matematica-computacional
+```
 
-# Acesse o diretório
-cd calculadora-quadratica
+### Compilação:
+```bash
+gcc -lm -Iinclude src/*.c main.c -o main
+```
 
-# Compile o programa
-gcc -lm -Iinclude  src/*.c main.c -o main
-
-# Execute
+### Execução:
+```bash
 ./main
 ```
 
 ## 📝 Exemplos de Uso
 
-**Entrada válida:**
+### Função Quadrática:
 ```
-Digite os coeficientes | a b c | separados por espaço: 2 -4 2
-
 === FUNÇÃO QUADRÁTICA ===
+
+Digite os coeficientes | a b c | separados por espaço: 2 -4 2
 
 Coeficiente a: 2.00
 Coeficiente b: -4.00
@@ -54,53 +60,63 @@ Raízes: x1 = 1.00, x2 = 1.00
 Vértice: (1.00, 0.00)
 ```
 
-**Discriminante negativo:**
+### Cálculo de Limites:
 ```
-Digite os coeficientes | a b c | separados por espaço: 3 2 1
+=== CÁLCULO DE LIMITES ===
 
-=== FUNÇÃO QUADRÁTICA ===
+Digite a função f(x) (use 'x' como variável, ex: x^2 + 3*x - 2): sin(x)/x
+Digite o ponto onde deseja calcular o limite: 0
 
-Coeficiente a: 3.00
-Coeficiente b: 2.00
-Coeficiente c: 1.00
+Calculando limite de f(x) = sin(x)/x quando x → 0.00
 
-Delta (Δ): -8.00
-Raízes: Complexas (discriminante negativo)
-Vértice: (-0.33, 0.67)
-```
+Aproximação pela esquerda:
+f(-0.100000) = 0.998334
+...
 
-**Erro de entrada:**
-```
-Digite os coeficientes | a b c | separados por espaço: a 5 2
-ERRO: Entrada inválida!
+Aproximação pela direita:
+f(0.100000) = 0.998334
+...
+
+Valor da função no ponto: f(0.00) = 1.000000
 ```
 
 ## 🧠 Algoritmos Implementados
 
-1. **Cálculo de Delta**
-   ```c
-   Δ = b² - 4ac
-   ```
+1. **Funções Quadráticas:**
+   - Δ = b² - 4ac (Discriminante)
+   - x = [-b ± √Δ] / (2a) (Fórmula de Bhaskara)
+   - xv = -b/(2a), yv = -Δ/(4a) (Vértice)
 
-2. **Fórmula de Bhaskara**
-   ```c
-   x = [-b ± √Δ] / (2a)
-   ```
-
-3. **Coordenadas do Vértice**
-   ```c
-   xv = -b/(2a)
-   yv = -Δ/(4a)
-   ```
+2. **Cálculo de Limites:**
+   - Aproximação bilateral (esquerda e direita)
+   - Avaliação de expressões matemáticas com tinyexpr
 
 ## 🛡️ Tratamento de Erros
 
 O programa verifica:
 - Tipos de entrada corretos
-- Coeficiente `a` diferente de zero
+- Coeficiente `a` diferente de zero em funções quadráticas
 - Valores numéricos válidos (não NaN/infinito)
-- Casos especiais de discriminante negativo
+- Expressões matemáticas malformadas
+- Casos especiais (discriminante negativo, divisão por zero)
 
+## 📁 Estrutura do Projeto
+
+```
+├── include
+│   ├── equacoes.h
+│   ├── limite.h
+│   ├── matematica.h
+│   └── tinyexpr.h
+├── LICENSE
+├── main.c
+├── README.md
+└── src
+    ├── equacoes.c
+    ├── limite.c
+    ├── matematica.c
+    └── tinyexpr.c
+```
 
 ## 👤 Autor
 
@@ -111,3 +127,7 @@ O programa verifica:
 ## 📄 Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 🙌 Créditos
+
+- Biblioteca [tinyexpr](https://github.com/codeplea/tinyexpr) por Lewis Van Winkle, utilizada para parsing e avaliação de expressões matemáticas.
