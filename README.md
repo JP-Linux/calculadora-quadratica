@@ -1,5 +1,6 @@
 # Matemática Computacional em C
 
+![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Este é um programa em C que oferece duas funcionalidades matemáticas principais: cálculo de funções quadráticas e cálculo de limites, com tratamento robusto de erros e interface intuitiva.
